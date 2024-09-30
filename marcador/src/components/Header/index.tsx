@@ -1,4 +1,4 @@
-import React,{ useState, useRef }from 'react';
+import React,{ useState }from 'react';
 import styled from 'styled-components';
 import { colors, shadows} from '../../StyleGuide';
 import ResetIcon  from '../../assets/ResetIcon.svg';
@@ -33,7 +33,7 @@ const Header: React.FC = () => {
   const [trucoValue, setTrucoValue] = useState(0);
   const [trucoActivated, setTrucoActivated] = useState(false);
   const [winner, setWinner] = useState<string | null>(null);
-
+  console.log(pointsTeam1,pointsTeam2,trucoValue,trucoActivated,winner)
   const handleResetGame = () => {
     setWinner(null); 
     setPointsTeam1(0);

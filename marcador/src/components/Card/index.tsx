@@ -57,12 +57,6 @@ const Card: React.FC = () => {
         setPointsTeam1(0);
         setPointsTeam2(0);
     };
-    
-    const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
-        if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-            handleCloseModal(); // Fecha o modal se o clique for fora
-        }
-    };
     const openModal = () => {
         setShowModal(true);
       };
