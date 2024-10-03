@@ -29,10 +29,5 @@ export const shadows = {
     darkShadow: '0px 8px 15px rgba(0, 0, 0, 0.2)',   
   };
   
-export default {
-    colors,
-    typography,
-    spacing,
-    shadows,
-  };
-  
+
+ 

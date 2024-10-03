@@ -13,17 +13,16 @@ const CardWrapper = styled.div`
   background-color: ${colors.primaryWhite};
   box-shadow:${shadows.darkShadow};
   border-radius: 8px;
-  padding: 20px;
+  padding: 20px 20px;
   text-align: center;
-
-  @media (max-width: 768px) {
-    padding: 15px;
+  @media (max-width: 680px) {
+    padding: 20px 0;
   }
 `;
 const Teams = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 4rem;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
 `;
 const Team = styled.div`
   flex: 1;
@@ -36,15 +35,36 @@ const Team = styled.div`
     margin-bottom: 10px;
   }
 `;
+const TeamDivisor = styled.div`
+  padding: 1px;
+  border: 1px solid #000000;
+  background: #020202;
+  box-sizing: border-box; 
+  border-radius: 10px;
+  @media (max-width: 380px) {
+    display: none;
+  }
+`
+const TeamCounter = styled.div`
+`
 const FirstTeam = styled.h2`
-color: ${colors.secondaryBlue};
+color: ${colors.primaryWhite};
+background-color: ${colors.accentPink};
+padding: 5px;
+border: 5px solid transparent;
+border-radius: 30px 30px 0 0;
+box-sizing: border-box;
 `;
 const SecondTeam = styled.h2`
-color: ${colors.secondaryBlue};
-
+color: ${colors.primaryWhite};
+background-color: ${colors.secondaryBlue};
+padding: 5px;
+border: 5px solid transparent;
+border-radius:0 0 30px 30px ;
+box-sizing: border-box;
 `;
 const Points = styled.div`
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: bold;
   margin-bottom: 10px;
 `;
@@ -54,23 +74,28 @@ const ButtonWinner = styled.button`
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin: 0 1rem 0 1rem;
   cursor: pointer;
 
   &:active {
     transform: scale(0.95);
+    color: ${colors.secondaryBlue};
   }
 `;
 const Links = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
-  margin: 4rem 0 0 0;
+  margin: 1rem 0 0 0;
 
 `;
 const TrucoSection = styled.div`
-  margin: 20px 0;
+  margin: 0;
+`;
+const TrucoValue = styled.div`
+  font-size: 1.5rem;
+  font-weight: 700;
 `;
 const ButtonsTruco = styled.button`
   background-color: ${colors.primaryPurple};
@@ -78,12 +103,13 @@ const ButtonsTruco = styled.button`
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin: 0 1rem 0 1rem;
   cursor: pointer;
 
   &:active {
     transform: scale(0.95);
+    color: ${colors.secondaryBlue};
   }
 `;
 const ButtonReset= styled.div`
@@ -114,6 +140,7 @@ const ButtonLearn = styled.a`
 }
 &:active {
     transform: scale(0.98);
+    color: ${colors.secondaryBlue};
   }
 `;
 const Overlay = styled.div`
@@ -130,6 +157,8 @@ const Overlay = styled.div`
 const Modal = styled.div`
   background-color: white;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin: 0 8rem;
@@ -146,6 +175,26 @@ const ModalContent = styled.div`
     margin-bottom: 20px;
   }
 `;
+const LearnTitle = styled.h2`
+margin: 0;
+`
+const ButtonLearnClose = styled.a`
+  margin: 20px auto;
+  background-color: #dc2ade;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+
+&:active {
+    transform: scale(0.98);
+}
+`;
+const LearnText = styled.p`
+`
+
 export {
     Container,
     CardWrapper,
@@ -162,4 +211,11 @@ export {
     ButtonLearn,
     Overlay,
     Modal,
-    ModalContent}
+    ModalContent,
+    LearnTitle,
+    ButtonLearnClose,
+    TeamDivisor,
+    TrucoValue,
+    LearnText,
+    TeamCounter
+  }
