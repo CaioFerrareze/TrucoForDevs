@@ -68,6 +68,12 @@ const Points = styled.div`
   font-weight: bold;
   margin-bottom: 10px;
 `;
+const PointsMatch = styled.div`
+font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+
+`
 const ButtonWinner = styled.button`
   background-color: ${colors.primaryPurple};
   color: white;
@@ -103,7 +109,7 @@ const ButtonsTruco = styled.button`
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin: 0 1rem 0 1rem;
   cursor: pointer;
 
@@ -217,5 +223,6 @@ export {
     TeamDivisor,
     TrucoValue,
     LearnText,
-    TeamCounter
+    TeamCounter,
+    PointsMatch
   }

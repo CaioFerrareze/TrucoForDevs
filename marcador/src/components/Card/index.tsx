@@ -16,6 +16,7 @@ import {
     Overlay,
     TeamDivisor,
     TrucoValue,
+    PointsMatch
 } from './style';
 
 const Card: React.FC = () => {
@@ -98,8 +99,8 @@ const Card: React.FC = () => {
                 </Teams>
                 <Links>
                     <TrucoSection>
-                        <TrucoValue>Valor da Rodada</TrucoValue>
-                        <Points>{actualValue === 0 ? actualValue + 1 : actualValue}</Points>
+                        <TrucoValue>Rodada Vale:</TrucoValue>
+                        <PointsMatch>{actualValue === 0 ? actualValue + 1 : actualValue}</PointsMatch>
                         <ButtonsTruco onClick={handleTruco}>{trucoValue === 0 ? 'TRUCO' : (trucoValue < 12 ? checkNumber(trucoValue + 3) : (checkNumber(12)))}</ButtonsTruco>
                         {trucoActivated && <ButtonsTruco onClick={handleCorrer}>Correr</ButtonsTruco>}
                     </TrucoSection>
