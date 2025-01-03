@@ -17,13 +17,14 @@ import {
     TeamDivisor,
     TrucoValue,
     PointsMatch,
-    MatchCounter,
     PointButtons
 } from './style';
 
 const Card: React.FC = () => {
     const [pointsTeam1, setPointsTeam1] = useState(0);
     const [pointsTeam2, setPointsTeam2] = useState(0);
+    const [team1Name, setTeam1Name] = useState('Team 1');
+    const [team2Name, setTeam2Name] = useState('Team 2');
     const [trucoValue, setTrucoValue] = useState(0);
     const [actualValue, setActualValue] = useState(0);
     const [trucoActivated, setTrucoActivated] = useState(false);
@@ -61,7 +62,6 @@ const Card: React.FC = () => {
             } else{
                 console.log(teamName)
             }
-            
             return Math.min(newPoints, 12); // Garante que o valor máximo seja 12
         });
     
@@ -98,32 +98,43 @@ const Card: React.FC = () => {
             return "TRUCO";
         }
     };
-
+    const handleTeam1Change = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTeam1Name(e.target.value);
+    };
+    
+    const handleTeam2Change = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTeam2Name(e.target.value);
+    };
                 
     return (
         <Container>
             <CardWrapper>
                 <Teams>
                     <Team>
-                        <FirstTeam maxLength={8} ></FirstTeam>
+                        <FirstTeam 
+                            maxLength={8} 
+                            placeholder="Team"
+                            value={team1Name}
+                            onChange={handleTeam1Change} 
+                        />   
                         <Points>{pointsTeam1}</Points>
                         <PointButtons>
-                            <ButtonWinner onClick={() => increasePoints(setPointsTeam1, "Back-End")}>+</ButtonWinner>
-                            <ButtonWinner onClick={() => decreasePoints(setPointsTeam1, "Back-End")}>-</ButtonWinner>
+                            <ButtonWinner onClick={() => increasePoints(setPointsTeam1, "Pink")}>+</ButtonWinner>
+                            <ButtonWinner onClick={() => decreasePoints(setPointsTeam1, "Pink")}>-</ButtonWinner>
                         </PointButtons>
-                        <MatchCounter>
-                            <img src="../../assets/circle.svg" alt="" />
-                            <img src="../../assets/circle.svg" alt="" />
-                            <img src="../../assets/circle.svg" alt="" />
-                        </MatchCounter>
                     </Team>
                     <TeamDivisor> </TeamDivisor>
                     <Team>
-                        <SecondTeam maxLength={8}></SecondTeam>
+                        <SecondTeam 
+                            maxLength={8} 
+                            placeholder="Team"
+                            value={team2Name}
+                            onChange={handleTeam2Change} 
+                        />
                         <Points>{pointsTeam2} </Points>
                         <PointButtons>
-                            <ButtonWinner onClick={() => increasePoints(setPointsTeam2, "Front-End")}>+</ButtonWinner>
-                            <ButtonWinner onClick={() => decreasePoints(setPointsTeam2, "Front-End")}>-</ButtonWinner>
+                            <ButtonWinner onClick={() => increasePoints(setPointsTeam2, "Blue")}>+</ButtonWinner>
+                            <ButtonWinner onClick={() => decreasePoints(setPointsTeam2, "Blue")}>-</ButtonWinner>
                         </PointButtons>
                     </Team>
                 </Teams>
@@ -140,7 +151,7 @@ const Card: React.FC = () => {
                 <Overlay onClick={handleCloseModal}>
                     <Modal ref={modalRef}>
                         <ModalContent>
-                            <h2>{winner} Ganhou!</h2>
+                            <h2>{winner === 'Pink' ? team1Name : team2Name} Ganhou!</h2>
                             <ButtonWinner onClick={handleCloseModal}>Novo Jogo</ButtonWinner>
                         </ModalContent>
                     </Modal>

@@ -53,8 +53,11 @@ border: 1px solid transparent;
 border-radius: 30px 30px 0 0;
 text-align: center;
 font-size: 1.5rem;
+font-weight: 700;
+color: white;
 margin: 0 0px 10px 0px;
-max-width: 9rem;
+max-width: 9.1rem;
+height: 2.7rem;
 `;
 export const SecondTeam = styled.input`
 color: ${colors.primaryWhite};
@@ -65,14 +68,14 @@ border-radius:0 0 30px 30px ;
 text-align: center;
 font-size: 1.5rem;
 margin: 0 0px 10px 0px;
-width: 9rem;
-
+max-width: 9.1rem;
+font-weight: 700;
+height: 2.7rem;
 `;
-export const Points = styled.button`
+export const Points = styled.div`
   font-size: 4rem;
   font-weight: bold;
   margin-bottom: 10px;
-  border: none;
 `;
 export const PointsMatch = styled.div`
 font-size: 4rem;
@@ -90,7 +93,7 @@ export const ButtonWinner = styled.button`
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   margin: 0 .5rem 0 .5rem;
   cursor: pointer;

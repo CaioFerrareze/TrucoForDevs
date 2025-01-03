@@ -8,7 +8,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+    ::placeholder{
+      color: white;
+      opacity: .5;
+    }
   }
 
   body {
