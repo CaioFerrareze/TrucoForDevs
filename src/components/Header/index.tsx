@@ -19,9 +19,6 @@ const HeaderContainer = styled.header`
   align-items: center;
   height: 60px;
   box-shadow: ${shadows.lightShadow};
-  p{
-    
-  }
   a{
     margin-left: auto;
   }

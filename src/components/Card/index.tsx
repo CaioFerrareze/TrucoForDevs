@@ -16,7 +16,9 @@ import {
     Overlay,
     TeamDivisor,
     TrucoValue,
-    PointsMatch
+    PointsMatch,
+    MatchCounter,
+    PointButtons
 } from './style';
 
 const Card: React.FC = () => {
@@ -27,9 +29,7 @@ const Card: React.FC = () => {
     const [trucoActivated, setTrucoActivated] = useState(false);
     const [winner, setWinner] = useState<string | null>(null);
 
-
     const modalRef = useRef<HTMLDivElement>(null);
-
 
     const increasePoints = (
         setPoints: React.Dispatch<React.SetStateAction<number>>, 
@@ -39,8 +39,27 @@ const Card: React.FC = () => {
             const newPoints = prev + (trucoActivated ? trucoValue : 1);
 
             if (newPoints >= 12 ) { 
-                setWinner(teamName);
+                setWinner(teamName);   
+            }
+            return Math.min(newPoints, 12); // Garante que o valor máximo seja 12
+        });
+    
+        setTrucoValue(0); 
+        setTrucoActivated(false);  
+        setActualValue(0);    
+    };
+    const decreasePoints = (
+        setPoints: React.Dispatch<React.SetStateAction<number>>, 
+        teamName: string
+    ) => {
+        setPoints(prev => {
+            let newPoints = prev 
+
+            if (newPoints > 0) {
+                newPoints -= 1 
                 
+            } else{
+                console.log(teamName)
             }
             
             return Math.min(newPoints, 12); // Garante que o valor máximo seja 12
@@ -70,11 +89,11 @@ const Card: React.FC = () => {
     const checkNumber = (number: number) => {
         switch (number) {
           case 6:
-            return "6 Ladrão!";
+            return "6";
           case 9:
-            return "9 Marreco!";
+            return "9";
           case 12:
-            return "DOZEEEE";
+            return "12";
           default:
             return "TRUCO";
         }
@@ -86,15 +105,26 @@ const Card: React.FC = () => {
             <CardWrapper>
                 <Teams>
                     <Team>
-                        <FirstTeam>Back-End</FirstTeam>
-                        <Points>{pointsTeam1} </Points>
-                        <ButtonWinner onClick={() => increasePoints(setPointsTeam1, "Back-End")}>Vencedor</ButtonWinner>
+                        <FirstTeam maxLength={8} ></FirstTeam>
+                        <Points>{pointsTeam1}</Points>
+                        <PointButtons>
+                            <ButtonWinner onClick={() => increasePoints(setPointsTeam1, "Back-End")}>+</ButtonWinner>
+                            <ButtonWinner onClick={() => decreasePoints(setPointsTeam1, "Back-End")}>-</ButtonWinner>
+                        </PointButtons>
+                        <MatchCounter>
+                            <img src="../../assets/circle.svg" alt="" />
+                            <img src="../../assets/circle.svg" alt="" />
+                            <img src="../../assets/circle.svg" alt="" />
+                        </MatchCounter>
                     </Team>
                     <TeamDivisor> </TeamDivisor>
                     <Team>
-                        <SecondTeam>Front-End</SecondTeam>
+                        <SecondTeam maxLength={8}></SecondTeam>
                         <Points>{pointsTeam2} </Points>
-                        <ButtonWinner onClick={() => increasePoints(setPointsTeam2, "Front-End")}>Vencedor</ButtonWinner>
+                        <PointButtons>
+                            <ButtonWinner onClick={() => increasePoints(setPointsTeam2, "Front-End")}>+</ButtonWinner>
+                            <ButtonWinner onClick={() => decreasePoints(setPointsTeam2, "Front-End")}>-</ButtonWinner>
+                        </PointButtons>
                     </Team>
                 </Teams>
                 <Links>
