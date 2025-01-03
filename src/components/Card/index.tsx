@@ -23,8 +23,8 @@ import {
 const Card: React.FC = () => {
     const [pointsTeam1, setPointsTeam1] = useState(0);
     const [pointsTeam2, setPointsTeam2] = useState(0);
-    const [team1Name, setTeam1Name] = useState('Team 1');
-    const [team2Name, setTeam2Name] = useState('Team 2');
+    const [team1Name, setTeam1Name] = useState('');
+    const [team2Name, setTeam2Name] = useState('');
     const [trucoValue, setTrucoValue] = useState(0);
     const [actualValue, setActualValue] = useState(0);
     const [trucoActivated, setTrucoActivated] = useState(false);
